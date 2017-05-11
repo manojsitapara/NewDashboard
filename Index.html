@@ -1,0 +1,187 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CXC Dashboard</title>
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="jquery.flowchart.css" rel="stylesheet">
+    <script src="jquery.min.js"></script>
+    <script src="jquery-ui.min.js"></script>
+    <script src="jquery.flowchart.js"></script>
+    <style>
+        body {
+            background-color: #fafafa;
+        }
+
+        .container {
+            margin: 150px auto;
+        }
+
+        .demo {
+            height: 500px;
+            margin-bottom: 10px;
+        }
+
+        .flowchart-operator-outputs {
+            display: table-cell;
+            width: 100%;
+        }
+
+
+        .flowchart-operator {
+            position: absolute;
+            width: 210px;
+            border: 1px solid #CCCCCC;
+            background: #FAFAFA;
+            pointer-events: initial;
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+    <div class="demo" id="example"></div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var data = {
+                operators: {
+                    transactions: {
+                        top: 20,
+                        left: 20,
+                        properties: {
+                            title: 'Transactions',
+                            outputs: {
+                                valid_transactions: {
+                                    label: '364k Valid Transactions'
+                                },
+                                filtered_transactions: {
+                                    label: '191k Filtered Transactions'
+                                },
+                                transactions_with_no_claims: {
+                                    label: '61k Transactions with No Claims'
+                                }
+                            }
+                        }
+                    },
+                    claims: {
+                        top: 160,
+                        left: 20,
+                        properties: {
+                            title: 'Claims',
+                            outputs: {
+                                total_claims: {
+                                    label: '20M Claims'
+                                }
+                            }
+                        }
+                    },
+                    cxc: {
+                        top: 140,
+                        left: 400,
+                        properties: {
+                            title: 'CXC',
+                            inputs: {
+                                input_1: {
+                                    label: ''
+                                },
+                                input_2: {
+                                    label: ''
+                                },
+                                input_3: {
+                                    label: ''
+                                }
+                            },
+                            outputs: {
+                                substantiated_by_cxc: {
+                                    label: ''
+                                }
+                            }
+                        }
+                    },
+                    participants: {
+                        top: 260,
+                        left: 20,
+                        properties: {
+                            title: 'Participants',
+                            outputs: {
+                                total_participants: {
+                                    label: '199k Participants'
+                                }
+                            }
+                        }
+                    },
+                    substantiated_transactions: {
+                        top: 140,
+                        left: 800,
+                        properties: {
+                            title: 'Substantiated Transactions',
+                            inputs: {
+                                transaction_substantiated_by_cxc: {
+                                    label: '269k Substantiated Transactions'
+                                }
+                            },
+                            outputs: {}
+                        }
+                    }
+                },
+                links: {
+                    link_1: {
+                        fromOperator: 'transactions',
+                        fromConnector: 'valid_transactions',
+                        toOperator: 'cxc',
+                        toConnector: 'input_2'
+                    },
+                    link_2: {
+                        fromOperator: 'claims',
+                        fromConnector: 'total_claims',
+                        toOperator: 'cxc',
+                        toConnector: 'input_1'
+                    },
+                    link_3: {
+                        fromOperator: 'participants',
+                        fromConnector: 'total_participants',
+                        toOperator: 'cxc',
+                        toConnector: 'input_3'
+                    },
+                    link_4: {
+                        fromOperator: 'cxc',
+                        fromConnector: 'substantiated_by_cxc',
+                        toOperator: 'substantiated_transactions',
+                        toConnector: 'transaction_substantiated_by_cxc'
+                    }
+                }
+            };
+
+            $('#example').flowchart({
+
+                // custom data
+                data: data,
+
+                // distance between the output line and the link
+                distanceFromArrow: 0,
+
+                // width of the links
+                linkWidth: 3,
+
+                // enables drag and drop
+                canUserMoveOperators: false,
+
+                // allows multiple links on the same input line
+                multipleLinksOnOutput: true
+
+
+
+
+            });
+        });
+
+
+
+    </script>
+</body>
+</html>
