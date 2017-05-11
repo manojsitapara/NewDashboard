@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -7,39 +7,10 @@
     <title>CXC Dashboard</title>
     <link href="bootstrap.min.css" rel="stylesheet">
     <link href="jquery.flowchart.css" rel="stylesheet">
+    <link href="custom.css" rel="stylesheet">
     <script src="jquery.min.js"></script>
     <script src="jquery-ui.min.js"></script>
     <script src="jquery.flowchart.js"></script>
-    <style>
-        body {
-            background-color: #fafafa;
-        }
-
-        .container {
-            margin: 150px auto;
-        }
-
-        .demo {
-            height: 500px;
-            margin-bottom: 10px;
-        }
-
-        .flowchart-operator-outputs {
-            display: table-cell;
-            width: 100%;
-        }
-
-
-        .flowchart-operator {
-            position: absolute;
-            width: 210px;
-            border: 1px solid #CCCCCC;
-            background: #FAFAFA;
-            pointer-events: initial;
-        }
-    </style>
-
-
 
 </head>
 
@@ -50,28 +21,52 @@
         $(document).ready(function () {
             var data = {
                 operators: {
-                    transactions: {
+                    validTransactions: {
                         top: 20,
                         left: 20,
                         properties: {
-                            title: 'Transactions',
+                            "class": 'flowchart-operator-yellow',
+                            title: 'Valid Transactions',
                             outputs: {
                                 valid_transactions: {
                                     label: '364k Valid Transactions'
-                                },
+                                }
+
+
+                            }
+                        }
+                    },
+                    filteredTransactions: {
+                        top: 110,
+                        left: 20,
+                        properties: {
+                            "class": 'flowchart-operator-yellow',
+                            title: 'Filtered Transactions',
+                            outputs: {
                                 filtered_transactions: {
                                     label: '191k Filtered Transactions'
-                                },
-                                transactions_with_no_claims: {
+                                }
+                            }
+                        }
+                    },
+                    noClaimTransactions: {
+                        top: 220,
+                        left: 20,
+                        properties: {
+                            "class": 'flowchart-operator-yellow',
+                            title: 'No Claim Transactions',
+                            outputs: {
+                                noClaim_transactions: {
                                     label: '61k Transactions with No Claims'
                                 }
                             }
                         }
                     },
                     claims: {
-                        top: 160,
+                        top: 320,
                         left: 20,
                         properties: {
+                            "class": 'flowchart-operator-blue',
                             title: 'Claims',
                             outputs: {
                                 total_claims: {
@@ -81,32 +76,27 @@
                         }
                     },
                     cxc: {
-                        top: 140,
-                        left: 400,
+                        top: 180,
+                        left: 450,
                         properties: {
                             title: 'CXC',
                             inputs: {
                                 input_1: {
                                     label: ''
-                                },
-                                input_2: {
-                                    label: ''
-                                },
-                                input_3: {
-                                    label: ''
                                 }
                             },
                             outputs: {
                                 substantiated_by_cxc: {
-                                    label: ''
+                                    label: ' '
                                 }
                             }
                         }
                     },
                     participants: {
-                        top: 260,
+                        top: 420,
                         left: 20,
                         properties: {
+                            "class": 'flowchart-operator-purple',
                             title: 'Participants',
                             outputs: {
                                 total_participants: {
@@ -119,6 +109,7 @@
                         top: 140,
                         left: 800,
                         properties: {
+                            "class": 'flowchart-operator-green',
                             title: 'Substantiated Transactions',
                             inputs: {
                                 transaction_substantiated_by_cxc: {
@@ -130,29 +121,43 @@
                     }
                 },
                 links: {
-                    link_1: {
-                        fromOperator: 'transactions',
+                    validTransactionLinkToCXC: {
+                        fromOperator: 'validTransactions',
                         fromConnector: 'valid_transactions',
                         toOperator: 'cxc',
-                        toConnector: 'input_2'
+                        toConnector: 'input_1'
                     },
-                    link_2: {
+                    filteredTransactionsLinkToCXC: {
+                        fromOperator: 'filteredTransactions',
+                        fromConnector: 'filtered_transactions',
+                        toOperator: 'cxc',
+                        toConnector: 'input_1'
+                    },
+                    noClaimTransactionsLinkToCXC: {
+                        fromOperator: 'noClaimTransactions',
+                        fromConnector: 'noClaim_transactions',
+                        toOperator: 'cxc',
+                        toConnector: 'input_1'
+                    },
+                    claimsLinkToCXC: {
                         fromOperator: 'claims',
                         fromConnector: 'total_claims',
                         toOperator: 'cxc',
                         toConnector: 'input_1'
                     },
-                    link_3: {
+                    participantsLinkToCXC: {
                         fromOperator: 'participants',
                         fromConnector: 'total_participants',
                         toOperator: 'cxc',
-                        toConnector: 'input_3'
+                        toConnector: 'input_1'
+
                     },
-                    link_4: {
+                    CXCLinkToSubstantiatedTransactions: {
                         fromOperator: 'cxc',
                         fromConnector: 'substantiated_by_cxc',
                         toOperator: 'substantiated_transactions',
                         toConnector: 'transaction_substantiated_by_cxc'
+
                     }
                 }
             };
@@ -166,13 +171,19 @@
                 distanceFromArrow: 0,
 
                 // width of the links
-                linkWidth: 3,
+                linkWidth: 5,
 
                 // enables drag and drop
-                canUserMoveOperators: false,
+                canUserMoveOperators: true,
 
                 // allows multiple links on the same input line
-                multipleLinksOnOutput: true
+                multipleLinksOnOutput: true,
+
+                //Default color of links.
+                defaultLinkColor: '#808080',
+
+                multipleLinksOnInput: true
+
 
 
 

@@ -1,0 +1,175 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CXC Dashboard</title>
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="jquery.flowchart.css" rel="stylesheet">
+    <link href="custom.css" rel="stylesheet">
+    <script src="jquery.min.js"></script>
+    <script src="jquery-ui.min.js"></script>
+    <script src="jquery.flowchart.js"></script>
+
+</head>
+
+<body>
+    <div class="demo" id="example"></div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var data = {
+                operators: {
+                    transactions: {
+                        top: 20,
+                        left: 20,
+                        properties: {
+                            "class": 'flowchart-operator-yellow',
+                            title: 'Transactions',
+                            outputs: {
+                                valid_transactions: {
+                                    label: '364k Valid Transactions'
+                                },
+                                filtered_transactions: {
+                                    label: '191k Filtered Transactions'
+                                },
+                                transactions_with_no_claims: {
+                                    label: '61k Transactions with No Claims'
+                                }
+                            }
+                        }
+                    },
+                    claims: {
+                        top: 170,
+                        left: 20,
+                        properties: {
+                            "class": 'flowchart-operator-blue',
+                            title: 'Claims',
+                            outputs: {
+                                total_claims: {
+                                    label: '20M Claims'
+                                }
+                            }
+                        }
+                    },
+                    cxc: {
+                        top: 160,
+                        left: 400,
+                        properties: {
+                            title: 'CXC',
+                            inputs: {
+                                input_1: {
+                                    label: ''
+                                }
+                            },
+                            outputs: {
+                                substantiated_by_cxc: {
+                                    label: ''
+                                }
+                            }
+                        }
+                    },
+                    participants: {
+                        top: 280,
+                        left: 20,
+                        properties: {
+                            "class": 'flowchart-operator-purple',
+                            title: 'Participants',
+                            outputs: {
+                                total_participants: {
+                                    label: '199k Participants'
+                                }
+                            }
+                        }
+                    },
+                    substantiated_transactions: {
+                        top: 140,
+                        left: 800,
+                        properties: {
+                            "class": 'flowchart-operator-green',
+                            title: 'Substantiated Transactions',
+                            inputs: {
+                                transaction_substantiated_by_cxc: {
+                                    label: '269k Substantiated Transactions'
+                                }
+                            },
+                            outputs: {}
+                        }
+                    }
+                },
+                links: {
+                    validTransactionLinkToCXC: {
+                        fromOperator: 'transactions',
+                        fromConnector: 'valid_transactions',
+                        toOperator: 'cxc',
+                        toConnector: 'input_1'
+                    },
+                    filteredTransactionsLinkToCXC: {
+                        fromOperator: 'transactions',
+                        fromConnector: 'filtered_transactions',
+                        toOperator: 'cxc',
+                        toConnector: 'input_1'
+                    },
+                    transactionsWithNoClaimsLinkToCXC: {
+                        fromOperator: 'transactions',
+                        fromConnector: 'transactions_with_no_claims',
+                        toOperator: 'cxc',
+                        toConnector: 'input_1'
+                    },
+                    claimsLinkToCXC: {
+                        fromOperator: 'claims',
+                        fromConnector: 'total_claims',
+                        toOperator: 'cxc',
+                        toConnector: 'input_1'
+                    },
+                    participantsLinkToCXC: {
+                        fromOperator: 'participants',
+                        fromConnector: 'total_participants',
+                        toOperator: 'cxc',
+                        toConnector: 'input_1'
+
+                    },
+                    CXCLinkToSubstantiatedTransactions: {
+                        fromOperator: 'cxc',
+                        fromConnector: 'substantiated_by_cxc',
+                        toOperator: 'substantiated_transactions',
+                        toConnector: 'transaction_substantiated_by_cxc'
+
+                    }
+                }
+            };
+
+            $('#example').flowchart({
+
+                    // custom data
+                data: data,
+
+                // distance between the output line and the link
+                distanceFromArrow: 0,
+
+                // width of the links
+                linkWidth: 5,
+
+                // enables drag and drop
+                canUserMoveOperators: true,
+
+                // allows multiple links on the same input line
+                multipleLinksOnOutput: true,
+
+                //Default color of links.
+                defaultLinkColor: '#808080',
+
+                multipleLinksOnInput: true
+
+
+
+
+            });
+        });
+
+
+
+    </script>
+</body>
+</html>

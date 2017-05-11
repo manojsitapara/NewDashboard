@@ -1,0 +1,124 @@
+body {
+    background-color: #fafafa;
+}
+
+.container {
+    margin: 150px auto;
+}
+
+.demo {
+    height: 800px;
+    margin-bottom: 10px;
+}
+
+
+
+
+.flowchart-operator {
+    position: absolute;
+    width: 210px;
+    background: #FAFAFA;
+    pointer-events: initial;
+}
+
+
+.flowchart-operator-outputs {
+    display: table-cell;
+    width: 100%;
+}
+
+
+
+.flowchart-operator-yellow {
+    position: absolute;
+    width: 210px;
+    background: #ffce80;
+    pointer-events: initial;
+}
+
+    .flowchart-operator-yellow .flowchart-operator-title {
+        width: 100%;
+        padding: 5px;
+        font-weight: bold;
+        border-bottom: 1px solid #ffb848;
+        background: #ffb848;
+        height: auto;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        cursor: move;
+    }
+
+
+
+
+.flowchart-operator-blue {
+    position: absolute;
+    width: 210px;
+    background: #78c8ed;
+    pointer-events: initial;
+}
+
+
+    .flowchart-operator-blue .flowchart-operator-title {
+        width: 100%;
+        padding: 5px;
+        font-weight: bold;
+        border-bottom: 1px solid #27a9e3;
+        background: #27a9e3;
+        height: auto;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        cursor: move;
+    }
+
+
+.flowchart-operator-green {
+    position: absolute;
+    width: 210px;
+    background: #58daa2;
+    pointer-events: initial;
+}
+
+    .flowchart-operator-green .flowchart-operator-title {
+        width: 100%;
+        padding: 5px;
+        font-weight: bold;
+        border-bottom: 1px solid #28b779;
+        background: #28b779;
+        height: auto;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        cursor: move;
+    }
+
+    .flowchart-operator-green .flowchart-operator-inputs {
+        display: table-cell;
+        width: 100%;
+    }
+
+
+
+.flowchart-operator-purple {
+    position: absolute;
+    width: 210px;
+    border: 1px solid #CCCCCC;
+    background: #bd60d2;
+    pointer-events: initial;
+}
+
+
+    .flowchart-operator-purple .flowchart-operator-title {
+        width: 100%;
+        padding: 5px;
+        font-weight: bold;
+        border-bottom: 1px solid #ad38c7;
+        background: #ad38c7;
+        height: auto;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        cursor: move;
+    }
