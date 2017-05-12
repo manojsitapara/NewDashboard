@@ -57,12 +57,28 @@
                         top: 160,
                         left: 400,
                         properties: {
-                            title: 'CXC',
+                            "class": 'flowchart-operator-cxc',
                             inputs: {
                                 input_1: {
                                     label: ''
+                                },
+                                input_2: {
+                                    label: ''
+                                },
+                                input_3: {
+                                    label: ''
+                                },
+                                input_4: {
+                                    label: ''
+                                },
+                                input_5: {
+                                    label: ''
+                                },
+                                input_6: {
+                                    label: ''
                                 }
                             },
+
                             outputs: {
                                 substantiated_by_cxc: {
                                     label: ''
@@ -71,7 +87,7 @@
                         }
                     },
                     participants: {
-                        top: 280,
+                        top: 305,
                         left: 20,
                         properties: {
                             "class": 'flowchart-operator-purple',
@@ -84,8 +100,8 @@
                         }
                     },
                     substantiated_transactions: {
-                        top: 140,
-                        left: 800,
+                        top: 170,
+                        left: 600,
                         properties: {
                             "class": 'flowchart-operator-green',
                             title: 'Substantiated Transactions',
@@ -93,41 +109,28 @@
                                 transaction_substantiated_by_cxc: {
                                     label: '269k Substantiated Transactions'
                                 }
-                            },
-                            outputs: {}
+                            }
                         }
                     }
                 },
                 links: {
-                    validTransactionLinkToCXC: {
-                        fromOperator: 'transactions',
-                        fromConnector: 'valid_transactions',
-                        toOperator: 'cxc',
-                        toConnector: 'input_1'
-                    },
                     filteredTransactionsLinkToCXC: {
                         fromOperator: 'transactions',
                         fromConnector: 'filtered_transactions',
                         toOperator: 'cxc',
-                        toConnector: 'input_1'
-                    },
-                    transactionsWithNoClaimsLinkToCXC: {
-                        fromOperator: 'transactions',
-                        fromConnector: 'transactions_with_no_claims',
-                        toOperator: 'cxc',
-                        toConnector: 'input_1'
+                        toConnector: 'input_6'
                     },
                     claimsLinkToCXC: {
                         fromOperator: 'claims',
                         fromConnector: 'total_claims',
                         toOperator: 'cxc',
-                        toConnector: 'input_1'
+                        toConnector: 'input_6'
                     },
                     participantsLinkToCXC: {
                         fromOperator: 'participants',
                         fromConnector: 'total_participants',
                         toOperator: 'cxc',
-                        toConnector: 'input_1'
+                        toConnector: 'input_6'
 
                     },
                     CXCLinkToSubstantiatedTransactions: {
@@ -142,7 +145,7 @@
 
             $('#example').flowchart({
 
-                    // custom data
+                // custom data
                 data: data,
 
                 // distance between the output line and the link
