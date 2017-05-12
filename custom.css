@@ -39,6 +39,7 @@ body {
     min-height: 11%;
 }
 
+
     .flowchart-operator-yellow .flowchart-operator-title {
         width: 100%;
         padding: 5px;
@@ -50,11 +51,9 @@ body {
         text-overflow: ellipsis;
         white-space: nowrap;
         cursor: move;
-        
         border-top-left-radius: 2em;
         border-top-right-radius: 2em;
         text-align: center;
-
     }
 
 
@@ -66,7 +65,7 @@ body {
     background: #78c8ed;
     pointer-events: initial;
     border-radius: 30px;
-        min-height: 11%;
+    min-height: 11%;
 }
 
 
@@ -81,11 +80,9 @@ body {
         text-overflow: ellipsis;
         white-space: nowrap;
         cursor: move;
-        
         border-top-left-radius: 2em;
         border-top-right-radius: 2em;
         text-align: center;
-
     }
 
 
@@ -95,7 +92,7 @@ body {
     background: #58daa2;
     pointer-events: initial;
     border-radius: 30px;
-        min-height: 11%;
+    min-height: 11%;
 }
 
     .flowchart-operator-green .flowchart-operator-title {
@@ -109,12 +106,11 @@ body {
         text-overflow: ellipsis;
         white-space: nowrap;
         cursor: move;
-        
         border-top-left-radius: 2em;
         border-top-right-radius: 2em;
         text-align: center;
-
     }
+
 
     .flowchart-operator-green .flowchart-operator-inputs {
         display: table-cell;
@@ -130,8 +126,7 @@ body {
     background: #bd60d2;
     pointer-events: initial;
     border-radius: 30px;
-        min-height: 11%;
-
+    min-height: 11%;
 }
 
 
@@ -146,11 +141,9 @@ body {
         text-overflow: ellipsis;
         white-space: nowrap;
         cursor: move;
-        
         border-top-left-radius: 2em;
         border-top-right-radius: 2em;
         text-align: center;
-
     }
 
 
@@ -160,18 +153,16 @@ body {
     height: 120px;
     border: 1px solid #CCCCCC;
     background-image: url("cxc_logo.png");
-    border: 0px ;
+    border: 0px;
     pointer-events: initial;
 }
 
 
-.flowchart-operator-cxc .flowchart-operator-title {
-    
-    padding: 0px;
-    border-bottom: 0px;
-    background: #fafafa;
-    
-}
+    .flowchart-operator-cxc .flowchart-operator-title {
+        padding: 0px;
+        border-bottom: 0px;
+        background: #fafafa;
+    }
 
 
 .flowchart-operator-connector-arrow {
@@ -184,8 +175,6 @@ body {
 }
 
 .flowchart-operator-connector-small-arrow {
-    
     border-top: 0px solid transparent;
     border-bottom: 0px solid transparent;
-    
 }
