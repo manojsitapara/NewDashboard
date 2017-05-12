@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -22,8 +22,8 @@
             var data = {
                 operators: {
                     validTransactions: {
-                        top: 20,
-                        left: 20,
+                        top: 60,
+                        left: 100,
                         properties: {
                             "class": 'flowchart-operator-yellow',
                             title: 'Valid Transactions',
@@ -36,35 +36,9 @@
                             }
                         }
                     },
-                    filteredTransactions: {
-                        top: 110,
-                        left: 20,
-                        properties: {
-                            "class": 'flowchart-operator-yellow',
-                            title: 'Filtered Transactions',
-                            outputs: {
-                                filtered_transactions: {
-                                    label: '191k Filtered Transactions'
-                                }
-                            }
-                        }
-                    },
-                    noClaimTransactions: {
-                        top: 220,
-                        left: 20,
-                        properties: {
-                            "class": 'flowchart-operator-yellow',
-                            title: 'No Claim Transactions',
-                            outputs: {
-                                noClaim_transactions: {
-                                    label: '61k Transactions with No Claims'
-                                }
-                            }
-                        }
-                    },
                     claims: {
-                        top: 320,
-                        left: 20,
+                        top: 230,
+                        left: 100,
                         properties: {
                             "class": 'flowchart-operator-blue',
                             title: 'Claims',
@@ -75,26 +49,9 @@
                             }
                         }
                     },
-                    cxc: {
-                        top: 180,
-                        left: 450,
-                        properties: {
-                            title: 'CXC',
-                            inputs: {
-                                input_1: {
-                                    label: ''
-                                }
-                            },
-                            outputs: {
-                                substantiated_by_cxc: {
-                                    label: ' '
-                                }
-                            }
-                        }
-                    },
                     participants: {
-                        top: 420,
-                        left: 20,
+                        top: 400,
+                        left: 100,
                         properties: {
                             "class": 'flowchart-operator-purple',
                             title: 'Participants',
@@ -105,9 +62,82 @@
                             }
                         }
                     },
+                    cxc: {
+                        top: 220,
+                        left: 500,
+                        properties: {
+                            "class": 'flowchart-operator-cxc',
+                            inputs: {
+                                input_1: {
+                                    label: ''
+                                },
+                                input_2: {
+                                    label: ''
+                                },
+                                input_3: {
+                                    label: ''
+                                },
+                                input_4: {
+                                    label: ''
+                                },
+                                input_5: {
+                                    label: ''
+                                },
+                                input_6: {
+                                    label: ''
+                                }
+                            },
+
+                            outputs: {
+                                substantiated_by_cxc: {
+                                    label: ''
+                                }
+                            }
+                        }
+                    },
+                    filteredTransactions: {
+                        top: 30,
+                        left: 830,
+                        properties: {
+                            "class": 'flowchart-operator-green',
+                            title: 'Filtered Transactions',
+                            inputs: {
+                                filtered_transactions: {
+                                    label: '191k Filtered Transactions'
+                                }
+                            }
+                        }
+                    },
+                    noClaimTransactions: {
+                        top: 160,
+                        left: 830,
+                        properties: {
+                            "class": 'flowchart-operator-green',
+                            title: 'No Claim Transactions',
+                            inputs: {
+                                noClaim_transactions: {
+                                    label: '61k Transactions with No Claims'
+                                }
+                            }
+                        }
+                    },
+                    not_yet_substantiated: {
+                        top: 280,
+                        left: 830,
+                        properties: {
+                            "class": 'flowchart-operator-green',
+                            title: 'Not Yet Substantiated',
+                            inputs: {
+                                not_yet_substantiated_by_cxc: {
+                                    label: '9k Yet to Substantiated'
+                                }
+                            },
+                            outputs: {}
+                        }
+                    },
                     substantiated_transactions: {
-                        top: 140,
-                        left: 800,
+                        top: 400,
+                        left: 830,
                         properties: {
                             "class": 'flowchart-operator-green',
                             title: 'Substantiated Transactions',
@@ -119,37 +149,47 @@
                             outputs: {}
                         }
                     }
+
+
                 },
                 links: {
                     validTransactionLinkToCXC: {
                         fromOperator: 'validTransactions',
                         fromConnector: 'valid_transactions',
                         toOperator: 'cxc',
-                        toConnector: 'input_1'
+                        toConnector: 'input_6'
                     },
-                    filteredTransactionsLinkToCXC: {
-                        fromOperator: 'filteredTransactions',
-                        fromConnector: 'filtered_transactions',
-                        toOperator: 'cxc',
-                        toConnector: 'input_1'
-                    },
-                    noClaimTransactionsLinkToCXC: {
-                        fromOperator: 'noClaimTransactions',
-                        fromConnector: 'noClaim_transactions',
-                        toOperator: 'cxc',
-                        toConnector: 'input_1'
-                    },
+
                     claimsLinkToCXC: {
                         fromOperator: 'claims',
                         fromConnector: 'total_claims',
                         toOperator: 'cxc',
-                        toConnector: 'input_1'
+                        toConnector: 'input_6'
                     },
                     participantsLinkToCXC: {
                         fromOperator: 'participants',
                         fromConnector: 'total_participants',
                         toOperator: 'cxc',
-                        toConnector: 'input_1'
+                        toConnector: 'input_6'
+
+                    },
+                    CXCLinkTofilteredTransactions: {
+                        fromOperator: 'cxc',
+                        fromConnector: 'substantiated_by_cxc',
+                        toOperator: 'filteredTransactions',
+                        toConnector: 'filtered_transactions'
+                    },
+                    CXCLinkToNoClaimTransactionsLinkToCXC: {
+                        fromOperator: 'cxc',
+                        fromConnector: 'substantiated_by_cxc',
+                        toOperator: 'noClaimTransactions',
+                        toConnector: 'noClaim_transactions'
+                    },
+                    CXCLinkToNotYetSubstantiatedTransactions: {
+                        fromOperator: 'cxc',
+                        fromConnector: 'substantiated_by_cxc',
+                        toOperator: 'not_yet_substantiated',
+                        toConnector: 'not_yet_substantiated_by_cxc'
 
                     },
                     CXCLinkToSubstantiatedTransactions: {
@@ -159,6 +199,9 @@
                         toConnector: 'transaction_substantiated_by_cxc'
 
                     }
+
+
+
                 }
             };
 

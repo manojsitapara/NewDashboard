@@ -115,6 +115,7 @@ body {
     .flowchart-operator-green .flowchart-operator-inputs {
         display: table-cell;
         width: 100%;
+        text-align: center;
     }
 
 
